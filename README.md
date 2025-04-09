@@ -57,11 +57,3 @@ A comprehensive calorie tracking and nutrition management application for Androi
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
-
-## License
-
-[Add your license information here]
-
-## Contact
-
-[Add your contact information here] 
