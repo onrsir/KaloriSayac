@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+        <!-- Calorie Goal Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_calorie_goal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/surface"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="1dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/daily_calorie_goal"
+                    android:textAppearance="@style/TextAppearance.App.HeadlineSmall"
+                    android:textColor="@color/on_background" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_calorie_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:minWidth="50dp"
+                        android:text="2000"
+                        android:textAppearance="@style/TextAppearance.App.BodyLarge"
+                        android:textColor="@color/primary"
+                        android:textStyle="bold" />
+
+                    <com.google.android.material.slider.Slider
+                        android:id="@+id/slider_calories"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:stepSize="50"
+                        android:value="2000"
+                        android:valueFrom="1000"
+                        android:valueTo="3500"
+                        app:labelBehavior="floating"
+                        app:thumbColor="@color/primary"
+                        app:trackColorActive="@color/primary"
+                        app:trackColorInactive="@color/progress_background" />
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Macro Goals Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_macro_goals"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:cardBackgroundColor="@color/surface"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="1dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/card_calorie_goal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/macro_goals"
+                    android:textAppearance="@style/TextAppearance.App.HeadlineSmall"
+                    android:textColor="@color/on_background" />
+
+                <!-- Protein Slider -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:text="@string/protein_label"
+                        android:textAppearance="@style/TextAppearance.App.BodyMedium"
+                        android:textColor="@color/on_background" />
+
+                    <TextView
+                        android:id="@+id/tv_protein_percent"
+                        android:layout_width="30dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:gravity="end"
+                        android:text="25%"
+                        android:textAppearance="@style/TextAppearance.App.BodyMedium"
+                        android:textColor="@color/protein"
+                        android:textStyle="bold" />
+
+                    <com.google.android.material.slider.Slider
+                        android:id="@+id/slider_protein"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:stepSize="5"
+                        android:value="25"
+                        android:valueFrom="10"
+                        android:valueTo="40"
+                        app:labelBehavior="floating"
+                        app:thumbColor="@color/protein"
+                        app:trackColorActive="@color/protein"
+                        app:trackColorInactive="@color/progress_background" />
+                </LinearLayout>
+
+                <!-- Carbs Slider -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:text="@string/carbs_label"
+                        android:textAppearance="@style/TextAppearance.App.BodyMedium"
+                        android:textColor="@color/on_background" />
+
+                    <TextView
+                        android:id="@+id/tv_carbs_percent"
+                        android:layout_width="30dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:gravity="end"
+                        android:text="50%"
+                        android:textAppearance="@style/TextAppearance.App.BodyMedium"
+                        android:textColor="@color/carbs"
+                        android:textStyle="bold" />
+
+                    <com.google.android.material.slider.Slider
+                        android:id="@+id/slider_carbs"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:stepSize="5"
+                        android:value="50"
+                        android:valueFrom="20"
+                        android:valueTo="70"
+                        app:labelBehavior="floating"
+                        app:thumbColor="@color/carbs"
+                        app:trackColorActive="@color/carbs"
+                        app:trackColorInactive="@color/progress_background" />
+                </LinearLayout>
+
+                <!-- Fat Slider -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:text="@string/fat_label"
+                        android:textAppearance="@style/TextAppearance.App.BodyMedium"
+                        android:textColor="@color/on_background" />
+
+                    <TextView
+                        android:id="@+id/tv_fat_percent"
+                        android:layout_width="30dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:gravity="end"
+                        android:text="25%"
+                        android:textAppearance="@style/TextAppearance.App.BodyMedium"
+                        android:textColor="@color/fat"
+                        android:textStyle="bold" />
+
+                    <com.google.android.material.slider.Slider
+                        android:id="@+id/slider_fat"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:stepSize="5"
+                        android:value="25"
+                        android:valueFrom="10"
+                        android:valueTo="50"
+                        app:labelBehavior="floating"
+                        app:thumbColor="@color/fat"
+                        app:trackColorActive="@color/fat"
+                        app:trackColorInactive="@color/progress_background" />
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Weight Goal Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_weight_goal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:cardBackgroundColor="@color/surface"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="1dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/card_macro_goals">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/weight_goal"
+                    android:textAppearance="@style/TextAppearance.App.HeadlineSmall"
+                    android:textColor="@color/on_background" />
+
+                <!-- Current Weight Input -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_current_weight"
+                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:hint="@string/current_weight"
+                    app:boxCornerRadiusBottomEnd="12dp"
+                    app:boxCornerRadiusBottomStart="12dp"
+                    app:boxCornerRadiusTopEnd="12dp"
+                    app:boxCornerRadiusTopStart="12dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_current_weight"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:text="75.0" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Target Weight Input -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_target_weight"
+                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:hint="@string/target_weight"
+                    app:boxCornerRadiusBottomEnd="12dp"
+                    app:boxCornerRadiusBottomStart="12dp"
+                    app:boxCornerRadiusTopEnd="12dp"
+                    app:boxCornerRadiusTopStart="12dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_target_weight"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:text="70.0" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Save Button -->
+        <Button
+            android:id="@+id/btn_save_goals"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/save_goals"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/card_weight_goal" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView> 

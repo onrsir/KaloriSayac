@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Primary brand colors -->
+    <color name="primary">#FF4A90E2</color>
+    <color name="primary_variant">#FF2A70C2</color>
+    <color name="on_primary">#FFFFFFFF</color>
+    
+    <!-- Secondary colors -->
+    <color name="secondary">#FF50C878</color> <!-- Emerald green -->
+    <color name="secondary_variant">#FF30A858</color>
+    <color name="on_secondary">#FFFFFFFF</color>
+    
+    <!-- Tertiary colors -->
+    <color name="tertiary">#FFFF9500</color> <!-- Orange for carbs -->
+    <color name="tertiary_variant">#FFFF7500</color>
+    <color name="on_tertiary">#FFFFFFFF</color>
+    
+    <!-- Error colors -->
+    <color name="error">#FFFF3B30</color> <!-- Also used for fats -->
+    <color name="on_error">#FFFFFFFF</color>
+    
+    <!-- Background colors -->
+    <color name="background">#FFF8F9FA</color>
+    <color name="on_background">#FF333333</color>
+    <color name="surface">#FFFFFFFF</color>
+    <color name="on_surface">#FF333333</color>
+    <color name="surface_variant">#FFF0F0F0</color>
+    
+    <!-- Other UI colors -->
+    <color name="card_background">#FFFFFFFF</color>
+    <color name="progress_background">#FFF0F0F0</color>
+    <color name="disabled">#FF999999</color>
+    <color name="divider">#FFF0F0F0</color>
+    
+    <!-- Nutrient colors -->
+    <color name="protein">#FF50C878</color> <!-- Green -->
+    <color name="carbs">#FFFF9500</color> <!-- Orange -->
+    <color name="fat">#FFFF3B30</color> <!-- Red -->
+    
+    <!-- Legacy colors -->
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+</resources>

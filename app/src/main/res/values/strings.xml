@@ -1,0 +1,55 @@
+<resources>
+    <string name="app_name">Kalori Sayaci</string>
+    
+    <!-- Bottom Navigation -->
+    <string name="nav_home">Ana Sayfa</string>
+    <string name="nav_stats">İstatistikler</string>
+    <string name="nav_profile">Profil</string>
+    <string name="nav_settings">Ayarlar</string>
+    
+    <!-- Home Screen -->
+    <string name="calories_label">kalori</string>
+    <string name="calories_target">%1$d hedef</string>
+    <string name="protein_label">Protein</string>
+    <string name="carbs_label">Karbonhidrat</string>
+    <string name="fat_label">Yağ</string>
+    <string name="quick_add_title">Hızlı Ekle</string>
+    <string name="add_food_button">Yemek Ekle</string>
+    
+    <!-- Tab Titles -->
+    <string name="tab_daily_tracking">Günlük Takip</string>
+    <string name="tab_food_database">Besin Veritabanı</string>
+    <string name="tab_goals">Hedefler</string>
+    
+    <!-- Meal Types -->
+    <string name="meal_breakfast">Kahvaltı</string>
+    <string name="meal_lunch">Öğle Yemeği</string>
+    <string name="meal_dinner">Akşam Yemeği</string>
+    <string name="meal_snacks">Atıştırmalıklar</string>
+    
+    <!-- Food Database -->
+    <string name="search_hint">Besin ara…</string>
+    <string name="popular_foods">Popüler Besinler</string>
+    
+    <!-- Food Categories -->
+    <string name="category_fruits">Meyveler</string>
+    <string name="category_vegetables">Sebzeler</string>
+    <string name="category_proteins">Proteinler</string>
+    <string name="category_grains">Tahıllar</string>
+    <string name="category_dairy">Süt Ürünleri</string>
+    <string name="category_beverages">İçecekler</string>
+    
+    <!-- Goals Screen -->
+    <string name="daily_calorie_goal">Günlük Kalori Hedefi</string>
+    <string name="macro_goals">Makro Besin Hedefleri</string>
+    <string name="weight_goal">Kilo Hedefi</string>
+    <string name="current_weight">Mevcut Kilo (kg)</string>
+    <string name="target_weight">Hedef Kilo (kg)</string>
+    <string name="save_goals">Hedefleri Kaydet</string>
+    
+    <!-- Common -->
+    <string name="save">Kaydet</string>
+    <string name="cancel">İptal</string>
+    <string name="kcal">%1$d kcal</string>
+    <string name="gram_unit">%1$d g</string>
+</resources>

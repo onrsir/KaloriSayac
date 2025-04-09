@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+        <!-- Search Bar -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/surface"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="1dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp">
+
+                <ImageView
+                    android:id="@+id/iv_search_icon"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginStart="8dp"
+                    android:src="@android:drawable/ic_menu_search"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tint="@color/disabled" />
+
+                <EditText
+                    android:id="@+id/et_search"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:background="@null"
+                    android:hint="@string/search_hint"
+                    android:inputType="text"
+                    android:padding="8dp"
+                    android:textAppearance="@style/TextAppearance.App.BodyMedium"
+                    android:textColor="@color/on_background"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/iv_search_icon"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Food Categories Title -->
+        <TextView
+            android:id="@+id/tv_categories_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Kategoriler"
+            android:textAppearance="@style/TextAppearance.App.HeadlineSmall"
+            android:textColor="@color/on_background"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/card_search" />
+
+        <!-- Food Categories Grid (would be a GridView or RecyclerView in a real app) -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_categories"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_categories_title">
+
+            <!-- Row 1 -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_category_fruits"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_marginEnd="8dp"
+                app:cardBackgroundColor="@color/surface"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="1dp"
+                app:layout_constraintEnd_toStartOf="@+id/card_category_vegetables"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="8dp">
+
+                    <ImageView
+                        android:id="@+id/iv_fruits"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:src="@android:drawable/ic_menu_gallery"
+                        app:layout_constraintBottom_toTopOf="@+id/tv_fruits"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_chainStyle="packed" />
+
+                    <TextView
+                        android:id="@+id/tv_fruits"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/category_fruits"
+                        android:textAppearance="@style/TextAppearance.App.BodySmall"
+                        android:textColor="@color/on_background"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/iv_fruits" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_category_vegetables"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_marginStart="8dp"
+                app:cardBackgroundColor="@color/surface"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="1dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/card_category_fruits"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="8dp">
+
+                    <ImageView
+                        android:id="@+id/iv_vegetables"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:src="@android:drawable/ic_menu_gallery"
+                        app:layout_constraintBottom_toTopOf="@+id/tv_vegetables"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_chainStyle="packed" />
+
+                    <TextView
+                        android:id="@+id/tv_vegetables"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/category_vegetables"
+                        android:textAppearance="@style/TextAppearance.App.BodySmall"
+                        android:textColor="@color/on_background"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/iv_vegetables" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Row 2 -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_category_proteins"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                app:cardBackgroundColor="@color/surface"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="1dp"
+                app:layout_constraintEnd_toStartOf="@+id/card_category_grains"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/card_category_fruits">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="8dp">
+
+                    <ImageView
+                        android:id="@+id/iv_proteins"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:src="@android:drawable/ic_menu_gallery"
+                        app:layout_constraintBottom_toTopOf="@+id/tv_proteins"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_chainStyle="packed" />
+
+                    <TextView
+                        android:id="@+id/tv_proteins"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/category_proteins"
+                        android:textAppearance="@style/TextAppearance.App.BodySmall"
+                        android:textColor="@color/on_background"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/iv_proteins" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_category_grains"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                app:cardBackgroundColor="@color/surface"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="1dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/card_category_proteins"
+                app:layout_constraintTop_toBottomOf="@id/card_category_vegetables">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="8dp">
+
+                    <ImageView
+                        android:id="@+id/iv_grains"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:src="@android:drawable/ic_menu_gallery"
+                        app:layout_constraintBottom_toTopOf="@+id/tv_grains"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_chainStyle="packed" />
+
+                    <TextView
+                        android:id="@+id/tv_grains"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/category_grains"
+                        android:textAppearance="@style/TextAppearance.App.BodySmall"
+                        android:textColor="@color/on_background"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/iv_grains" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- Popular Foods Title -->
+        <TextView
+            android:id="@+id/tv_popular_foods_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/popular_foods"
+            android:textAppearance="@style/TextAppearance.App.HeadlineSmall"
+            android:textColor="@color/on_background"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cl_categories" />
+
+        <!-- Popular Foods List (would be a RecyclerView in real app) -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_popular_foods"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:cardBackgroundColor="@color/surface"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="1dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_popular_foods_title">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- Popular Food Item 1 -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:id="@+id/iv_popular_food1"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:scaleType="centerCrop"
+                        android:src="@android:drawable/ic_menu_gallery"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_popular_food1_name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:text="Tavuk Göğsü (Izgara)"
+                        android:textAppearance="@style/TextAppearance.App.BodyMedium"
+                        android:textColor="@color/on_background"
+                        app:layout_constraintEnd_toStartOf="@+id/iv_add_popular_food1"
+                        app:layout_constraintStart_toEndOf="@+id/iv_popular_food1"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_popular_food1_calories"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:text="165 kcal / 100g"
+                        android:textAppearance="@style/TextAppearance.App.BodySmall"
+                        android:textColor="@color/disabled"
+                        app:layout_constraintEnd_toStartOf="@+id/iv_add_popular_food1"
+                        app:layout_constraintStart_toEndOf="@+id/iv_popular_food1"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_popular_food1_name" />
+
+                    <ImageView
+                        android:id="@+id/iv_add_popular_food1"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@android:drawable/ic_input_add"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="@color/primary" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/divider" />
+
+                <!-- Popular Food Item 2 (similar structure) -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:id="@+id/iv_popular_food2"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:scaleType="centerCrop"
+                        android:src="@android:drawable/ic_menu_gallery"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_popular_food2_name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:text="Tam Tahıllı Ekmek"
+                        android:textAppearance="@style/TextAppearance.App.BodyMedium"
+                        android:textColor="@color/on_background"
+                        app:layout_constraintEnd_toStartOf="@+id/iv_add_popular_food2"
+                        app:layout_constraintStart_toEndOf="@+id/iv_popular_food2"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_popular_food2_calories"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:text="80 kcal / 1 dilim"
+                        android:textAppearance="@style/TextAppearance.App.BodySmall"
+                        android:textColor="@color/disabled"
+                        app:layout_constraintEnd_toStartOf="@+id/iv_add_popular_food2"
+                        app:layout_constraintStart_toEndOf="@+id/iv_popular_food2"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_popular_food2_name" />
+
+                    <ImageView
+                        android:id="@+id/iv_add_popular_food2"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@android:drawable/ic_input_add"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="@color/primary" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView> 

@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+        <!-- Date header -->
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textAppearance="@style/TextAppearance.App.BodyMedium"
+            android:textColor="@color/on_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="9 Nisan 2025, Çarşamba" />
+
+        <!-- Calorie Progress Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_calorie_progress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:cardBackgroundColor="@color/surface"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="2dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_date">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp">
+
+                <!-- Progress Circle -->
+                <com.google.android.material.progressindicator.CircularProgressIndicator
+                    android:id="@+id/progress_calories"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="16dp"
+                    android:progress="62"
+                    app:indicatorColor="@color/primary"
+                    app:indicatorSize="160dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:trackColor="@color/progress_background"
+                    app:trackThickness="12dp" />
+
+                <!-- Calorie Count in Circle -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="@id/progress_calories"
+                    app:layout_constraintEnd_toEndOf="@id/progress_calories"
+                    app:layout_constraintStart_toStartOf="@id/progress_calories"
+                    app:layout_constraintTop_toTopOf="@id/progress_calories">
+
+                    <TextView
+                        android:id="@+id/tv_calories_consumed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="@style/TextAppearance.App.HeadlineMedium"
+                        android:textColor="@color/on_background"
+                        android:textStyle="bold"
+                        tools:text="1250" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/calories_label"
+                        android:textAppearance="@style/TextAppearance.App.BodySmall"
+                        android:textColor="@color/on_background" />
+
+                    <TextView
+                        android:id="@+id/tv_calories_target"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="@style/TextAppearance.App.BodySmall"
+                        android:textColor="@color/disabled"
+                        tools:text="2000 hedef" />
+                </LinearLayout>
+
+                <!-- Nutrient Bars -->
+                <LinearLayout
+                    android:id="@+id/ll_nutrients"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:orientation="horizontal"
+                    android:weightSum="3"
+                    app:layout_constraintTop_toBottomOf="@id/progress_calories">
+
+                    <!-- Protein -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <View
+                            android:layout_width="12dp"
+                            android:layout_height="12dp"
+                            android:background="@drawable/circle_protein" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="@string/protein_label"
+                            android:textAppearance="@style/TextAppearance.App.BodySmall"
+                            android:textColor="@color/on_background" />
+
+                        <TextView
+                            android:id="@+id/tv_protein"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="@style/TextAppearance.App.BodyMedium"
+                            android:textColor="@color/on_background"
+                            android:textStyle="bold"
+                            tools:text="45g" />
+                    </LinearLayout>
+
+                    <!-- Carbs -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <View
+                            android:layout_width="12dp"
+                            android:layout_height="12dp"
+                            android:background="@drawable/circle_carbs" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="@string/carbs_label"
+                            android:textAppearance="@style/TextAppearance.App.BodySmall"
+                            android:textColor="@color/on_background" />
+
+                        <TextView
+                            android:id="@+id/tv_carbs"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="@style/TextAppearance.App.BodyMedium"
+                            android:textColor="@color/on_background"
+                            android:textStyle="bold"
+                            tools:text="150g" />
+                    </LinearLayout>
+
+                    <!-- Fat -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <View
+                            android:layout_width="12dp"
+                            android:layout_height="12dp"
+                            android:background="@drawable/circle_fat" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="@string/fat_label"
+                            android:textAppearance="@style/TextAppearance.App.BodySmall"
+                            android:textColor="@color/on_background" />
+
+                        <TextView
+                            android:id="@+id/tv_fat"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="@style/TextAppearance.App.BodyMedium"
+                            android:textColor="@color/on_background"
+                            android:textStyle="bold"
+                            tools:text="35g" />
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Quick Add Section -->
+        <TextView
+            android:id="@+id/tv_quick_add_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/quick_add_title"
+            android:textAppearance="@style/TextAppearance.App.HeadlineSmall"
+            android:textColor="@color/on_background"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/card_calorie_progress" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_quick_add"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:clipToPadding="false"
+            android:orientation="horizontal"
+            android:paddingStart="0dp"
+            android:paddingEnd="16dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_quick_add_title"
+            tools:itemCount="5"
+            tools:listitem="@layout/item_quick_add" />
+
+        <!-- Meals Section - tabs and content -->
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:background="@color/surface"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rv_quick_add"
+            app:tabGravity="fill"
+            app:tabIndicatorColor="@color/primary"
+            app:tabMode="fixed"
+            app:tabSelectedTextColor="@color/primary"
+            app:tabTextColor="@color/disabled">
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tab_daily_tracking" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tab_food_database" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tab_goals" />
+        </com.google.android.material.tabs.TabLayout>
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tab_layout" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView> 
