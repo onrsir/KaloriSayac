@@ -79,24 +79,24 @@ class NutritionViewModel : ViewModel() {
 
     // Besin adından görsel URL'si belirle
     private fun getImageUrlForFood(foodName: String): String {
-        // Map food names to appropriate image URLs
         return when (foodName.lowercase()) {
-            "elma" -> "https://raw.githubusercontent.com/onrsir/KaloriSayac/master/fastfood_icons/apple.png"
-            "muz" -> "https://raw.githubusercontent.com/onrsir/KaloriSayac/master/fastfood_icons/banana.png" 
-            "ekmek" -> "https://raw.githubusercontent.com/onrsir/KaloriSayac/master/fastfood_icons/bread.png"
-            "burger" -> "https://raw.githubusercontent.com/onrsir/KaloriSayac/master/fastfood_icons/burger.png"
-            "tavuk" -> "https://raw.githubusercontent.com/onrsir/KaloriSayac/master/fastfood_icons/chicken.png"
-            "çikolata" -> "https://raw.githubusercontent.com/onrsir/KaloriSayac/master/fastfood_icons/chocolate.png"
-            "kola" -> "https://raw.githubusercontent.com/onrsir/KaloriSayac/master/fastfood_icons/coke.png"
-            "kurabiye" -> "https://raw.githubusercontent.com/onrsir/KaloriSayac/master/fastfood_icons/cookie.png"
-            "pizza" -> "https://raw.githubusercontent.com/onrsir/KaloriSayac/master/fastfood_icons/pizza.png"
-            "sosisli" -> "https://raw.githubusercontent.com/onrsir/KaloriSayac/master/fastfood_icons/hotdog.png"
-            "makarna" -> "https://raw.githubusercontent.com/onrsir/KaloriSayac/master/fastfood_icons/pasta.png"
-            "et" -> "https://raw.githubusercontent.com/onrsir/KaloriSayac/master/fastfood_icons/meat.png"
-            "sütlaç" -> "https://raw.githubusercontent.com/onrsir/KaloriSayac/master/fastfood_icons/rice_pudding.png"
-            "salata" -> "https://raw.githubusercontent.com/onrsir/KaloriSayac/master/fastfood_icons/salad.png"
-            "sandviç" -> "https://raw.githubusercontent.com/onrsir/KaloriSayac/master/fastfood_icons/sandwich.png"
-            else -> "https://raw.githubusercontent.com/onrsir/KaloriSayac/master/fastfood_icons/default_food.png"
+            // Wikipedia Commons'dan alınan gerçek yiyecek görselleri
+            "elma" -> "https://upload.wikimedia.org/wikipedia/commons/1/15/Red_Apple.jpg"
+            "muz" -> "https://upload.wikimedia.org/wikipedia/commons/8/8a/Banana-Single.jpg"
+            "ekmek", "tam tahıllı ekmek" -> "https://upload.wikimedia.org/wikipedia/commons/7/71/Anadama_bread_%281%29.jpg"
+            "yoğurt" -> "https://upload.wikimedia.org/wikipedia/commons/e/ea/Turkish_Yogurt.jpg"
+            "tavuk göğsü", "tavuk" -> "https://upload.wikimedia.org/wikipedia/commons/3/3c/Chicken_breast_fillet.jpg"
+            "burger" -> "https://upload.wikimedia.org/wikipedia/commons/4/4d/Cheeseburger.jpg"
+            "çikolata" -> "https://upload.wikimedia.org/wikipedia/commons/7/70/Chocolate_%28blue_background%29.jpg"
+            "kola" -> "https://upload.wikimedia.org/wikipedia/commons/c/cf/Tumbler_of_cola_with_ice.jpg"
+            "pizza" -> "https://upload.wikimedia.org/wikipedia/commons/a/a3/Eq_it-na_pizza-margherita_sep2005_sml.jpg"
+            "makarna" -> "https://upload.wikimedia.org/wikipedia/commons/3/3f/Pasta_03.jpg"
+            "et" -> "https://upload.wikimedia.org/wikipedia/commons/2/2a/Beef_fillet_steak_with_mushrooms.jpg"
+            "salata" -> "https://upload.wikimedia.org/wikipedia/commons/9/94/Salad_platter.jpg"
+            "kahve" -> "https://upload.wikimedia.org/wikipedia/commons/4/45/A_small_cup_of_coffee.JPG"
+            "yumurta" -> "https://upload.wikimedia.org/wikipedia/commons/5/5e/Chicken_egg_2009-06-04.jpg"
+            // Diğer yiyecekler varsayılan bir görsel kullanacak
+            else -> "https://upload.wikimedia.org/wikipedia/commons/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg" // Varsayılan yemek görseli
         }
     }
 

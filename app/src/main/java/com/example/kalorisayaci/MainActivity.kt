@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
@@ -27,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         
         setSupportActionBar(binding.topAppBar)
         
-        // Setup Navigation Controller
+        // Setup Navigation Controller - Use a safer approach with NavHostFragment
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
         
