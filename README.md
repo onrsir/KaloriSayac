@@ -25,10 +25,6 @@ A comprehensive calorie tracking and nutrition management application for Androi
   - MPAndroidChart (for visualizations)
   - Glide (image loading)
 
-## Screenshots
-
-[Add screenshots of your application here]
-
 ## Requirements
 
 - Android SDK 24+
@@ -53,7 +49,3 @@ A comprehensive calorie tracking and nutrition management application for Androi
 4. **Statistics**: Monitor your nutrition trends over time
 5. **Profile**: Set personal information and preferences
 6. **Goals**: Configure your daily calorie, macro, and weight targets
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
