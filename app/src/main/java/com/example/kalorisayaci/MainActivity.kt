@@ -3,7 +3,7 @@ package com.example.kalorisayaci
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
@@ -23,9 +23,11 @@ class MainActivity : AppCompatActivity() {
         
         setSupportActionBar(binding.topAppBar)
         
-        // Setup Navigation
+        // Setup Navigation - Düzeltilmiş NavController erişimi
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        navController = navHostFragment.navController
+        
         val navView: BottomNavigationView = binding.bottomNavigationView
-        navController = findNavController(R.id.nav_host_fragment)
         
         // Configure the top-level destinations (no back button)
         val appBarConfiguration = AppBarConfiguration(
