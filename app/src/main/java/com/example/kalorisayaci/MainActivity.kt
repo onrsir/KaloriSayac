@@ -2,9 +2,11 @@ package com.example.kalorisayaci
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.WindowCompat
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.kalorisayaci.databinding.ActivityMainBinding
@@ -14,8 +16,10 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
+    private lateinit var appBarConfiguration: AppBarConfiguration
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        WindowCompat.setDecorFitsSystemWindows(window, false)
         super.onCreate(savedInstanceState)
         
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -23,14 +27,12 @@ class MainActivity : AppCompatActivity() {
         
         setSupportActionBar(binding.topAppBar)
         
-        // Setup Navigation - Düzeltilmiş NavController erişimi
+        // Setup Navigation Controller
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
         
-        val navView: BottomNavigationView = binding.bottomNavigationView
-        
         // Configure the top-level destinations (no back button)
-        val appBarConfiguration = AppBarConfiguration(
+        appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.navigation_home,
                 R.id.navigation_stats,
@@ -39,8 +41,11 @@ class MainActivity : AppCompatActivity() {
             )
         )
         
+        // Setup the ActionBar with NavController
         setupActionBarWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController)
+        
+        // Setup Bottom Navigation
+        binding.bottomNavigationView.setupWithNavController(navController)
         
         // Setup FAB click listener
         binding.fabAddFood.setOnClickListener {
@@ -55,6 +60,6 @@ class MainActivity : AppCompatActivity() {
     }
     
     override fun onSupportNavigateUp(): Boolean {
-        return navController.navigateUp() || super.onSupportNavigateUp()
+        return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 } 
