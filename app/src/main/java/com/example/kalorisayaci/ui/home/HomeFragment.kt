@@ -5,13 +5,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.kalorisayaci.R
+import com.example.kalorisayaci.data.model.Food
 import com.example.kalorisayaci.databinding.FragmentHomeBinding
 import com.example.kalorisayaci.ui.home.tabs.DailyTrackingFragment
 import com.example.kalorisayaci.ui.home.tabs.FoodDatabaseFragment
 import com.example.kalorisayaci.ui.home.tabs.GoalsFragment
+import com.example.kalorisayaci.viewmodel.NutritionViewModel
 import com.google.android.material.tabs.TabLayoutMediator
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -22,12 +26,8 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     
-    // Sample data - would come from a ViewModel in a real app
-    private val caloriesConsumed = 1250
-    private val caloriesTarget = 2000
-    private val protein = 45
-    private val carbs = 150
-    private val fat = 35
+    // Use ViewModel instead of static data
+    private val nutritionViewModel: NutritionViewModel by viewModels()
     
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -42,9 +42,7 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         
         setupDate()
-        setupCalorieProgress()
-        setupNutrientInfo()
-        setupQuickAddItems()
+        setupObservers()
         setupTabs()
     }
     
@@ -54,29 +52,64 @@ class HomeFragment : Fragment() {
         binding.tvDate.text = currentDate
     }
     
-    private fun setupCalorieProgress() {
-        // Set calorie values
-        binding.tvCaloriesConsumed.text = caloriesConsumed.toString()
-        binding.tvCaloriesTarget.text = getString(R.string.calories_target, caloriesTarget)
+    private fun setupObservers() {
+        // Observe calories data and update UI
+        nutritionViewModel.caloriesConsumed.observe(viewLifecycleOwner, Observer { calories ->
+            binding.tvCaloriesConsumed.text = calories.toString()
+            updateCalorieProgress()
+        })
+        
+        nutritionViewModel.calorieTarget.observe(viewLifecycleOwner, Observer { target ->
+            binding.tvCaloriesTarget.text = getString(R.string.calories_target, target)
+            updateCalorieProgress()
+        })
+        
+        // Observe macronutrients
+        nutritionViewModel.protein.observe(viewLifecycleOwner, Observer { protein ->
+            binding.tvProtein.text = "$protein g"
+        })
+        
+        nutritionViewModel.carbs.observe(viewLifecycleOwner, Observer { carbs ->
+            binding.tvCarbs.text = "$carbs g"
+        })
+        
+        nutritionViewModel.fat.observe(viewLifecycleOwner, Observer { fat ->
+            binding.tvFat.text = "$fat g"
+        })
+        
+        // Observe quick add items
+        nutritionViewModel.quickAddItems.observe(viewLifecycleOwner, Observer { items ->
+            setupQuickAddItems(items)
+        })
+    }
+    
+    private fun updateCalorieProgress() {
+        val consumed = nutritionViewModel.caloriesConsumed.value ?: 0
+        val target = nutritionViewModel.calorieTarget.value ?: 1
         
         // Calculate progress percentage (0-100)
-        val progressPercentage = ((caloriesConsumed.toFloat() / caloriesTarget.toFloat()) * 100).toInt()
+        val progressPercentage = ((consumed.toFloat() / target.toFloat()) * 100).toInt()
         binding.progressCalories.progress = progressPercentage
     }
     
-    private fun setupNutrientInfo() {
-        binding.tvProtein.text = "$protein g"
-        binding.tvCarbs.text = "$carbs g"
-        binding.tvFat.text = "$fat g"
-    }
-    
-    private fun setupQuickAddItems() {
-        val quickAddAdapter = QuickAddAdapter(getSampleQuickAddItems()) { food ->
-            // Handle quick add item click
-            // This would add the food to today's log
+    private fun setupQuickAddItems(quickAddItems: List<Food>) {
+        val items = quickAddItems.map { 
+            QuickAddItem(it.name, it.calories, it.imageUrl)
+        }
+        
+        val quickAddAdapter = QuickAddAdapter(items) { item ->
+            // Add food to meals via ViewModel
+            val food = quickAddItems.find { it.name == item.name }
+            food?.let {
+                nutritionViewModel.addFoodToMeal(it, null) // Quick add as a snack
+                // Refresh UI data
+                nutritionViewModel.refreshData()
+            }
+            
+            // Show confirmation toast
             android.widget.Toast.makeText(
                 requireContext(),
-                "${food.name} eklendi (${food.calories} kcal)",
+                "${item.name} eklendi (${item.calories} kcal)",
                 android.widget.Toast.LENGTH_SHORT
             ).show()
         }
@@ -103,16 +136,6 @@ class HomeFragment : Fragment() {
         }.attach()
     }
     
-    private fun getSampleQuickAddItems(): List<QuickAddItem> {
-        return listOf(
-            QuickAddItem("Elma", 95, R.drawable.ic_launcher_foreground),
-            QuickAddItem("Yoğurt", 150, R.drawable.ic_launcher_foreground),
-            QuickAddItem("Muz", 105, R.drawable.ic_launcher_foreground),
-            QuickAddItem("Kahve", 5, R.drawable.ic_launcher_foreground),
-            QuickAddItem("Yumurta", 78, R.drawable.ic_launcher_foreground)
-        )
-    }
-    
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
@@ -127,7 +150,7 @@ class HomeFragment : Fragment() {
         
         override fun createFragment(position: Int): Fragment {
             return when (position) {
-                0 -> DailyTrackingFragment()
+                0 -> DailyTrackingFragment.newInstance(nutritionViewModel)
                 1 -> FoodDatabaseFragment()
                 2 -> GoalsFragment()
                 else -> throw IllegalArgumentException("Invalid position: $position")
@@ -139,5 +162,5 @@ class HomeFragment : Fragment() {
 data class QuickAddItem(
     val name: String,
     val calories: Int,
-    val imageResId: Int
+    val imageUrl: String
 ) 

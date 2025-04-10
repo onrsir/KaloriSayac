@@ -3,6 +3,8 @@ package com.example.kalorisayaci.ui.home
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.example.kalorisayaci.R
 import com.example.kalorisayaci.databinding.ItemQuickAddBinding
 
 class QuickAddAdapter(
@@ -20,27 +22,27 @@ class QuickAddAdapter(
     }
 
     override fun onBindViewHolder(holder: QuickAddViewHolder, position: Int) {
-        holder.bind(items[position])
+        val item = items[position]
+        with(holder.binding) {
+            tvFoodName.text = item.name
+            tvCalories.text = "${item.calories} kcal"
+            
+            // Load image from URL using Glide
+            Glide.with(ivFood.context)
+                .load(item.imageUrl)
+                .placeholder(R.drawable.ic_launcher_foreground)
+                .error(R.drawable.ic_launcher_foreground)
+                .into(ivFood)
+            
+            // Add meal to nutrition when clicked
+            root.setOnClickListener {
+                onClick(item)
+            }
+        }
     }
 
     override fun getItemCount() = items.size
 
     inner class QuickAddViewHolder(private val binding: ItemQuickAddBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-
-        init {
-            binding.root.setOnClickListener {
-                val position = adapterPosition
-                if (position != RecyclerView.NO_POSITION) {
-                    onClick(items[position])
-                }
-            }
-        }
-
-        fun bind(item: QuickAddItem) {
-            binding.tvFoodName.text = item.name
-            binding.tvCalories.text = "${item.calories} kcal"
-            binding.ivFood.setImageResource(item.imageResId)
-        }
-    }
+        RecyclerView.ViewHolder(binding.root)
 } 
