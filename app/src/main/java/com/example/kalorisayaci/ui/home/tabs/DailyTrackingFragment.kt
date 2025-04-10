@@ -8,8 +8,11 @@ import androidx.fragment.app.Fragment
 import com.example.kalorisayaci.R
 import com.example.kalorisayaci.data.model.Meal
 import com.example.kalorisayaci.data.model.MealType
+import com.example.kalorisayaci.viewmodel.NutritionViewModel
 
 class DailyTrackingFragment : Fragment() {
+
+    private lateinit var viewModel: NutritionViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -61,5 +64,13 @@ class DailyTrackingFragment : Fragment() {
                 foods = listOf()
             )
         )
+    }
+    
+    companion object {
+        fun newInstance(viewModel: NutritionViewModel): DailyTrackingFragment {
+            val fragment = DailyTrackingFragment()
+            fragment.viewModel = viewModel
+            return fragment
+        }
     }
 } 

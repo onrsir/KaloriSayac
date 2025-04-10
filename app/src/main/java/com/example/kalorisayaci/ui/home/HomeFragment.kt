@@ -99,12 +99,7 @@ class HomeFragment : Fragment() {
         
         val quickAddAdapter = QuickAddAdapter(items) { item ->
             // Add food to meals via ViewModel
-            val food = quickAddItems.find { it.name == item.name }
-            food?.let {
-                nutritionViewModel.addFoodToMeal(it, null) // Quick add as a snack
-                // Refresh UI data
-                nutritionViewModel.refreshData()
-            }
+            nutritionViewModel.quickAddFood(item)
             
             // Show confirmation toast
             android.widget.Toast.makeText(
