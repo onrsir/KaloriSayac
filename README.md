@@ -1,5 +1,8 @@
 # KaloriSayaci (Calorie Counter)
 
+![image](https://github.com/user-attachments/assets/7a1d0a44-ee1e-458c-9aee-a538b71b36e7)
+
+
 A comprehensive calorie tracking and nutrition management application for Android users to monitor daily food intake, track macro nutrients, and achieve fitness goals.
 
 ## Features
