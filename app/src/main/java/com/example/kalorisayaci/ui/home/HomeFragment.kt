@@ -10,7 +10,6 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.kalorisayaci.R
-import com.example.kalorisayaci.data.model.Food
 import com.example.kalorisayaci.databinding.FragmentHomeBinding
 import com.example.kalorisayaci.ui.home.tabs.DailyTrackingFragment
 import com.example.kalorisayaci.ui.home.tabs.FoodDatabaseFragment
@@ -92,12 +91,8 @@ class HomeFragment : Fragment() {
         binding.progressCalories.progress = progressPercentage
     }
     
-    private fun setupQuickAddItems(quickAddItems: List<Food>) {
-        val items = quickAddItems.map { 
-            QuickAddItem(it.name, it.calories, it.imageUrl)
-        }
-        
-        val quickAddAdapter = QuickAddAdapter(items) { item ->
+    private fun setupQuickAddItems(quickAddItems: List<QuickAddItem>) {
+        val quickAddAdapter = QuickAddAdapter(quickAddItems) { item ->
             // Add food to meals via ViewModel
             nutritionViewModel.quickAddFood(item)
             

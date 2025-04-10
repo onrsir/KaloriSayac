@@ -43,6 +43,6 @@ class QuickAddAdapter(
 
     override fun getItemCount() = items.size
 
-    inner class QuickAddViewHolder(private val binding: ItemQuickAddBinding) :
+    inner class QuickAddViewHolder(val binding: ItemQuickAddBinding) :
         RecyclerView.ViewHolder(binding.root)
 } 
